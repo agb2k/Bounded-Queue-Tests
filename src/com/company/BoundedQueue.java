@@ -16,23 +16,29 @@ public class BoundedQueue
     private int size, front, back;
     private final int capacity;
 
+//    Initializes a bounded queue
     public BoundedQueue (int capacity)
     {
+//        Throws exception if capacity < 0
         if (capacity < 0)
             throw new IllegalArgumentException ("BoundedQueue.constructor");
+//        If condition satisfied, bounded queue is created
         this.capacity = capacity;
         elements = new Object [capacity];
         size  = 0; front = 0; back  = 0;
     }
 
+//    Enqueues a new item in the existing queue
     public void enQueue (Object o)
             throws NullPointerException, IllegalStateException
     {  // Modifies: this
         // Effects:   If argument is null throw NullPointerException
         // else if this is full, throw IllegalStateException,
         // else make o the newest element of this
+//        Throws exception if no object is entered
         if (o == null)
             throw new NullPointerException ("BoundedQueue.enQueue");
+//        Throws exception if queue is full i.e. greater than capacity
         else if (size == capacity)
             throw new IllegalStateException ("BoundedQueue.enQueue");
         else
